@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+
+         <!-- Webpage title -->
+        <title> 
+            Image Processing Assignment
+        </title>
+        
+    </head>
+
+   <body> 
+       <table id="image-table"> 
+           <tr>
+               <th class="header-col0"> - </th>
+               <th class="header-col1"> Original Image </th>
+               <th class="header-col2"> Gaussian Noise added to Original </th>
+               <th class="header-col3"> Salt & Pepper added to Original </th>
+           </tr>
+           <tbody id="repeat">
+           <!-- Row1: Image to process -->
+           <tr>
+               <th> Image </th>
+               <!-- Original -->
+               <td class="main-content">
+                   <table>
+                    <tr> 
+                        <td class="variable-img-class">  </td>
+                    </tr>
+                    <tr> 
+                        <td class="variable-hist-class"> Histogram </td>
+                    </tr>
+                    </table>    
+                </td>
+                <!-- Gaussian -->
+                <td class="main-content">
+                    <table>
+                     <tr> 
+                         <td class="variable-img-class"> Image </td>
+                     </tr>
+                     <tr> 
+                         <td class="variable-hist-class"> Histogram </td>
+                     </tr>
+                     </table>    
+                 </td>
+                <!-- Median -->
+                <td class="main-content">
+                    <table>
+                     <tr> 
+                         <td class="variable-img-class"> Image </td>
+                     </tr>
+                     <tr> 
+                         <td class="variable-hist-class"> Histogram </td>
+                     </tr>
+                     </table>    
+                 </td>
+           </tr>
+           <!-- Row2: Averaging -->
+           <tr>
+                <th> Averaging applied </th>
+                 <!-- Original -->
+                <td class="main-content">
+                   <table>
+                    <tr> 
+                        <td class="variable-img-class"> Image </td>
+                    </tr>
+                    <tr> 
+                        <td class="variable-hist-class"> Histogram </td>
+                    </tr>
+                    </table>    
+                </td>
+                <!-- Gaussian -->
+                <td class="main-content">
+                    <table>
+                     <tr> 
+                         <td class="variable-img-class"> </td>
+                     </tr>
+                     <tr> 
+                         <td class="variable-hist-class"> Histogram </td>
+                     </tr>
+                     </table>    
+                 </td>
+                <!-- Median -->
+                <td class="main-content">
+                    <table>
+                     <tr> 
+                         <td class="variable-img-class"> Image </td>
+                     </tr>
+                     <tr> 
+                         <td class="variable-hist-class"> Histogram </td>
+                     </tr>
+                     </table>    
+                 </td>
+           </tr>
+           <!-- Row3: Median -->
+           <tr>
+               <th> Median applied </th>
+                <!-- Original -->
+                <td class="main-content">
+                    <table>
+                     <tr> 
+                         <td class="variable-img-class"> Image </td>
+                     </tr>
+                     <tr> 
+                         <td class="variable-hist-class"> Histogram </td>
+                     </tr>
+                     </table>    
+                </td>
+                <!-- Gaussian -->
+                <td class="main-content">
+                     <table>
+                      <tr> 
+                          <td class="variable-img-class"> Image </td>
+                      </tr>
+                      <tr> 
+                          <td class="variable-hist-class"> Histogram </td>
+                      </tr>
+                      </table>    
+                  </td>
+                 <!-- Median -->
+                <td class="main-content">
+                     <table>
+                      <tr> 
+                          <td class="variable-img-class"> Image </td>
+                      </tr>
+                      <tr> 
+                          <td class="variable-hist-class"> Histogram </td>
+                      </tr>
+                      </table>    
+                </td>
+           </tr>
+        </tbody>
+       </table>
+       <script>
+        var to_repeat = document.getElementById("repeat").innerHTML
+        var to_append = document.getElementById("image-table")
+        for (i=1; i<10; i++){
+            to_append.innerHTML += to_repeat;
+        }
+        
+        var modify_img = document.getElementsByClassName("variable-img-class")
+        var count = 1
+        for (i=1; i<=90; i++){
+            modify_img[i-1].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/original_" + count + ".png' />";
+            modify_img[i].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/gaussian_added_" + count + ".png' />";
+            modify_img[i+1].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/sp_added_" + count + ".png' />";
+
+            modify_img[i+2].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/original_avg_" + count + ".png' />";
+            modify_img[i+3].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/avg_gaussian_" + count + ".png' />";
+            modify_img[i+4].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/sp_avg_" + count + ".png' />";
+
+            modify_img[i+5].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/original_med_" + count + ".png' />";
+            modify_img[i+6].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/med_gaussian_" + count + ".png' />";
+            modify_img[i+7].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/sp_med_" + count + ".png' />";
+            i += 8
+            count += 1
+        }
+
+        count = 1
+        var modify_hist = document.getElementsByClassName("variable-hist-class")
+        for (i=1; i<=27; ++i){
+            modify_hist[i-1].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/original_hist_" + count + ".png' />";
+            modify_hist[i].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/gaussian_added_hist_" + count + ".png' />";
+            modify_hist[i+1].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/sp_added_hist_" + count + ".png' />";
+
+            modify_hist[i+2].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/original_avg_hist_" + count + ".png' />";
+            modify_hist[i+3].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/avg_gaussian_hist_" + count + ".png' />";
+            modify_hist[i+4].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/sp_avg_hist_" + count + ".png' />";
+
+            modify_hist[i+5].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/original_med_hist_" + count + ".png' />";
+            modify_hist[i+6].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/med_gaussian_hist_" + count + ".png' />";
+            modify_hist[i+7].innerHTML = "<img src='/home/gokulakrishnan/FDIP_images/sp_med_hist_" + count + ".png' />";
+            i += 8
+            count += 1
+        }
+
+    </script>
+   </body>
+
+</html>
